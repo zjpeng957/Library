@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>BookTabWidget</class>
+ <widget class="QWidget" name="BookTabWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>778</width>
+    <height>557</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>BookTabWidget</string>
+  </property>
+  <widget class="QWidget" name="verticalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>781</width>
+     <height>561</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>2</number>
+      </property>
+      <widget class="QWidget" name="borrow">
+       <attribute name="title">
+        <string>已借阅</string>
+       </attribute>
+       <widget class="QTableWidget" name="tableBorrow">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>771</width>
+          <height>541</height>
+         </rect>
+        </property>
+        <column>
+         <property name="text">
+          <string>编号</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>借阅人编号</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>借书时间</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>剩余时间</string>
+         </property>
+        </column>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="Order">
+       <attribute name="title">
+        <string>预约用户</string>
+       </attribute>
+       <widget class="QTableWidget" name="tableOrder">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>781</width>
+          <height>531</height>
+         </rect>
+        </property>
+        <column>
+         <property name="text">
+          <string>预约用户</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>预约时间</string>
+         </property>
+        </column>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="Buy">
+       <attribute name="title">
+        <string>购入时间</string>
+       </attribute>
+       <widget class="QTableWidget" name="tableBuy">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>781</width>
+          <height>541</height>
+         </rect>
+        </property>
+        <column>
+         <property name="text">
+          <string>编号</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>购书日期</string>
+         </property>
+        </column>
+       </widget>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

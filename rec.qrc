@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>default.jpg</file>
+        <file>pressed.jpg</file>
+    </qresource>
+    <qresource prefix="/data">
+        <file>press.txt</file>
+    </qresource>
+</RCC>
