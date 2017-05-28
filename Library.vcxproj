@@ -141,7 +141,6 @@
     <ClCompile Include="book.cpp" />
     <ClCompile Include="BookDetail.cpp" />
     <ClCompile Include="BookInfo.cpp" />
-    <ClCompile Include="booklist.cpp" />
     <ClCompile Include="BookTabWidget.cpp" />
     <ClCompile Include="book_to_inter.cpp" />
     <ClCompile Include="BorrowAndReturn.cpp" />
@@ -174,7 +173,6 @@
     <ClCompile Include="Debug\moc_registerdialog.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="encrypt_and_decipher.cpp" />
     <ClCompile Include="GeneratedFiles\qrc_rec.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
       </PrecompiledHeader>
@@ -206,12 +204,13 @@
   <ItemGroup>
     <ClInclude Include="book.h" />
     <ClInclude Include="BookInfo.h" />
+    <ClInclude Include="BorrowAndReturn.h" />
     <ClInclude Include="buy.h" />
     <ClInclude Include="ClientInfo.h" />
-    <ClInclude Include="fuction.h" />
     <ClInclude Include="header.h" />
     <ClInclude Include="login.h" />
     <ClInclude Include="register.h" />
+    <ClInclude Include="SearchAndCount.h" />
     <CustomBuild Include="msgWidget.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing msgWidget.h...</Message>
@@ -252,7 +251,6 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DNDEBUG "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtCore" "-I.\release" "-I$(QTDIR)\mkspecs\win32-msvc2015" "-I.\GeneratedFiles"</Command>
     </CustomBuild>
-    <ClInclude Include="GeneratedFiles\ui_booklist.h" />
     <ClInclude Include="GeneratedFiles\ui_BookTabWidget.h" />
     <ClInclude Include="GeneratedFiles\ui_ClientDetail.h" />
     <ClInclude Include="GeneratedFiles\ui_logindialog.h" />
@@ -336,17 +334,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="booklist.ui">
-      <FileType>Document</FileType>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Uic%27ing %(Identity)...</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
-    </CustomBuild>
     <CustomBuild Include="logindialog.ui">
       <FileType>Document</FileType>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>

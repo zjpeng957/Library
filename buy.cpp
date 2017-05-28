@@ -1,54 +1,71 @@
 #include"client.h"
 #include"book.h"
-#include"global.h"
-#include"buy.h"
-#include"global.h"
-  /*
-    queue<unsigned> ordered;//预约用户队列
-    仍未初始化*/
+#include "global.h"
 
-int Book_water;
 
-int buy_book(QString bookname,QString writer,int press,int category,int num,double price,unsigned int time)
+int buy_book(QString bookname, QString writer,int press,int category,int num,double price,unsigned int time)
 {
     int i;
     Book *newbook=NULL;
     Book *last;
     last=BookInfo;
-    newbook=new Book[1];
+    for(newbook=BookInfo;newbook!=NULL;newbook=newbook->next)
+    {
+     
+		if(newbook->name==bookname)
+        {
+            
+			if(newbook->writer == writer)
+            {
+                for(i=0;i<num;i++)
+                {
+                    newbook->status[newbook->totalNumber+i]=0;
+                    newbook->buyTime[newbook->totalNumber+i]=time;
+                    newbook->number[newbook->totalNumber+i]=book_making(category,press);
+                    //add_N_book(time,newbook->number[newbook->totalNumber+i],newbook->name,newbook->writer,newbook->press,newbook->totalNumber+num,num);
+                }
+                newbook->totalNumber+=num;
+                newbook->currentNumber+=num;
+				totalBook += num;
+                return 1;
+            }
+        }
+    }
+    newbook=new Book;
     if(newbook==NULL)
     {
         return 0;
     }
-    //strcpy(newbook->name,bookname);
+    
 	newbook->name = bookname;
     newbook->category=category;
-    //strcpy(newbook->writer,writer);
+    
 	newbook->writer = writer;
     newbook->press=press;
     newbook->next=NULL;
     newbook->price=price;
     newbook->totalNumber=num;
     newbook->currentNumber=num;
-    newbook->buyTime[0]=time;
-	totalBook += num;
+	
     for(i=0;i<num;i++)
     {
         newbook->status[i]=0;
         newbook->number[i]=book_making(category,press);
-		//-------------------------------编号参数
-        add_N_book(time,newbook->number,qstr2str(newbook->name).c_str(),qstr2str(newbook->writer).c_str(),newbook->press,newbook->totalNumber,num);
+        newbook->buyTime[i]=time;
+        //add_N_book(time,newbook->number[i],newbook->name,newbook->writer,newbook->press,newbook->totalNumber,num);
     }
-	if (BookInfo == nullptr) BookInfo = newbook;
-	else
+	if (last == nullptr)
 	{
-		while (last->next != NULL)
-		{
-			last = last->next;
-		}
-		last->next = newbook;
+		BookInfo = newbook;
+		totalBook += num;
+		return 1;
 	}
-	
+    while(last->next!=NULL)
+    {
+        last=last->next;
+    }
+    last->next=newbook;
+	totalBook += num;
     return 1;
 }
 

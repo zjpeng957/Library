@@ -28,7 +28,6 @@ void ClientDetail::HideButton()
 
 ClientDetail::~ClientDetail()
 {
-	//delete TargetClient;
 }
 
 void ClientDetail::TableBorrowInit()

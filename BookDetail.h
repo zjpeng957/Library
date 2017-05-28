@@ -1,5 +1,5 @@
 #pragma once
-
+//书籍详情界面
 #include <QWidget>
 #include "ui_BookDetail.h"
 #include "global.h"

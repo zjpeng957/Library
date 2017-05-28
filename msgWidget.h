@@ -1,5 +1,5 @@
 #pragma once
-
+//消息界面
 #include <QWidget>
 #include <qmessagebox.h>
 #include <qstring.h>

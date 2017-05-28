@@ -10,4 +10,5 @@ Client::Client()
 		time[i] = 0;
 		message[i] = 0;
 	}
+	next = nullptr;
 }

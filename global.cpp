@@ -1,14 +1,15 @@
 #include"global.h"
 
-Book *BookInfo=nullptr;
-Client *ClientInfo=nullptr;
-map<int, string> press;
-map<int, string> category;
-map<int, string> school;
-int totalBook;
-int totalBorrowedBook;
-int totalClient;
-int day = 0;
+Book *BookInfo=nullptr;//书籍信息链表
+Client *ClientInfo=nullptr;//用户信息链表
+map<int, string> press;//出版社信息
+map<int, string> category;//书籍类型信息
+map<int, string> school;//学院信息
+int totalBook;//图书馆藏书量
+int totalBorrowedBook;//总借书量
+int totalClient;//总用户数
+int day;//当前日期
+int Book_water;//当前图书流水号
 
 void readMap(map<int, string> &data, const char *path)
 {
@@ -25,13 +26,13 @@ void readMap(map<int, string> &data, const char *path)
 void readCount()
 {
 	ifstream in("count.txt");
-	in >> totalBook >> Book_water >>totalBorrowedBook>> totalClient >> Client_water>>day;
+	in >> totalBook >>totalBorrowedBook>> totalClient >> Client_water>> Book_water >> day;
 	in.close();
 }
 void saveCount()
 {
 	ofstream out("count.txt");
-	out << totalBook << Book_water<<totalBorrowedBook << totalClient << Client_water<<day;
+	out << totalBook<<" " << " " <<totalBorrowedBook << " " << totalClient << " " << Client_water << " "<<Book_water<<" " <<day;
 	out.close();
 }
 

@@ -20,11 +20,7 @@ void inter_to_client(const Client *client )
 	{
 		fprintf(tp, "%d ", client->type);//类型
 		
-		/*for (i = 0; client->name[i] !='\0'; i++)//姓名
-		{
-			fprintf(tp, "%c ", client->name[i]); 
-		}
-		fprintf(tp, "# ");//对于数组，添加‘#’区别*/
+		
 		fprintf(tp, "%s ", qstr2str(client->name).c_str());
 
 		fprintf(tp, "%d ", client->number);//工作证号或学生证号
@@ -34,21 +30,21 @@ void inter_to_client(const Client *client )
 		fprintf(tp, "%d ", client->Amount);//借书数量
 		fprintf(tp, "%d ", client->credit);//信用分数
 
-		encrypt(qstr2str(client->password).c_str(),tp);//密码
+		
+		string pw = qstr2str(client->password);
+		fprintf(tp, "%s ", pw.c_str());
 
 		for (i = 0; i<MAX_B/*client->bookNo[i] != 0*/; i++)//所借书的编号
 		{
 			fprintf(tp, "%d ", client->bookNo[i]); 
 		}
-		//fprintf(tp, "0 ");//对于数组，添加‘0’区别 
+		
 
 		for (i = 0; i<MAX_B; i++)//用户预约的书籍名
 		{
 			fprintf(tp, "%s ", qstr2str(client->OrderedBook[i]).c_str()); 
 		}
-		//fprintf(tp, "# ");//对于数组，添加‘#’区别
-		//fprintf(tp, "%s ", client->OrderedBook[]);//用户预约的书籍名
-
+		
 		for (i = 0; i<MAX_B; i++)//用户借走的书籍名
 		{
 			fprintf(tp, "%s ", qstr2str(client->BorrowedBook[i]).c_str());
@@ -59,13 +55,13 @@ void inter_to_client(const Client *client )
 		{
 			fprintf(tp, "%d ", client->time[i]); 
 		}
-		//fprintf(tp, "0 ");//对于数组，添加‘0’区别 
+		
 
 		for (i = 0; i<MAX_B; i++)
 		{
 			fprintf(tp, "%d ", client->message[i]);
 		}
-		//fprintf(tp, "0 ");//对于数组，添加‘0’区别
+		
 		
 		client = client->next;//下一个结构 
 	}

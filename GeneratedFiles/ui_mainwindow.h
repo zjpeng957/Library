@@ -96,6 +96,7 @@ public:
     QPushButton *ButtonConfirm;
     QTableWidget *tableResult;
     QLabel *TextResult;
+    QPushButton *ButtonRate;
     QWidget *PageReturn;
     QTableWidget *tableReturn;
     QWidget *PageInfo;
@@ -464,6 +465,9 @@ public:
         TextResult->setObjectName(QStringLiteral("TextResult"));
         TextResult->setGeometry(QRect(20, 210, 101, 31));
         TextResult->setFont(font1);
+        ButtonRate = new QPushButton(PageSearch);
+        ButtonRate->setObjectName(QStringLiteral("ButtonRate"));
+        ButtonRate->setGeometry(QRect(800, 210, 93, 28));
         stackedWidgetC->addWidget(PageSearch);
         PageReturn = new QWidget();
         PageReturn->setObjectName(QStringLiteral("PageReturn"));
@@ -622,9 +626,9 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(1);
         stackedWidgetC->setCurrentIndex(0);
-        tabBook->setCurrentIndex(0);
+        tabBook->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -636,7 +640,7 @@ public:
         ButtonSearchBA->setText(QApplication::translate("MainWindow", "\344\271\246\347\261\215\346\237\245\350\257\242", Q_NULLPTR));
         ButtonBuyA->setText(QApplication::translate("MainWindow", "\350\264\255\344\271\246", Q_NULLPTR));
         labelSchoolS->setText(QApplication::translate("MainWindow", "\345\255\246\351\231\242\357\274\232", Q_NULLPTR));
-        labelNoS->setText(QApplication::translate("MainWindow", "\347\274\226\345\217\267\357\274\232", Q_NULLPTR));
+        labelNoS->setText(QApplication::translate("MainWindow", "\350\264\246\345\217\267\357\274\232", Q_NULLPTR));
         labelTypeS->setText(QApplication::translate("MainWindow", "\347\261\273\345\236\213\357\274\232", Q_NULLPTR));
         labelNameS->setText(QApplication::translate("MainWindow", "\345\247\223\345\220\215\357\274\232", Q_NULLPTR));
         ButtonClientSearch->setText(QApplication::translate("MainWindow", "\346\220\234\347\264\242", Q_NULLPTR));
@@ -679,6 +683,7 @@ public:
         QTableWidgetItem *___qtablewidgetitem8 = tableResult->horizontalHeaderItem(4);
         ___qtablewidgetitem8->setText(QApplication::translate("MainWindow", "\345\211\251\344\275\231\346\225\260\351\207\217", Q_NULLPTR));
         TextResult->setText(QApplication::translate("MainWindow", "\347\273\223\346\236\234\357\274\232", Q_NULLPTR));
+        ButtonRate->setText(QApplication::translate("MainWindow", "\345\200\237\351\230\205\347\216\207", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem9 = tableReturn->horizontalHeaderItem(0);
         ___qtablewidgetitem9->setText(QApplication::translate("MainWindow", "\344\271\246\345\220\215", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem10 = tableReturn->horizontalHeaderItem(1);

@@ -1,4 +1,6 @@
 #pragma once
+
+//全局变量模块
 #include<vector>
 #include<map>
 #include<fstream>
@@ -24,6 +26,7 @@ extern int nextClientNo;
 extern map<int, string> press;
 extern map<int, string> category;
 extern map<int, string> school;
+extern int Book_water;
 
 const QString TableButtonStyle("QPushButton{border:0px;padding:2px 4px;background-color:rgb(60, 195, 245);color:rgb(235, 242, 249);}"
 	"QPushButton:hover{border:0px;padding:2px 4px;background-color:rgb(60, 220, 245);color:rgb(235, 242, 249);}"

@@ -15,7 +15,8 @@
 #include"global.h"
 #include "msgWidget.h"
 #include "buy.h"
-#include "fuction.h"
+#include "SearchAndCount.h"
+#include "BorrowAndReturn.h"
 #include "ClientInfo.h"
 #include "BookInfo.h"
 
@@ -83,11 +84,12 @@ private:
 
 	void BuyBook();
 	void ReturnBorrowedBook(QTableWidgetItem *Item);
-
+	void ShowBorrowRate();
     Client *CurrentClient;
 	Book *SearchedBook[MAX_BOOK];
 	Client *SearchedClient[MAX_C];
 	QAction *msgAction;
+	msgWidget *msg;
 	QTime Time;
 };
 

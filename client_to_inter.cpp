@@ -13,6 +13,7 @@ void client_to_inter(Client  *&clientInfo)
 	int i;
 	int temp;
 	char tamp; 
+	bool flag = false;
 	Client *client = new Client;
 	clientInfo = client;
 
@@ -26,17 +27,10 @@ void client_to_inter(Client  *&clientInfo)
 
 	while (temp != -1)//信息读完 
 	{
+		flag = true;
 		client->type = temp;//类型 
 
-		/*fscanf_s(tp, "%c", &tamp, sizeof(char));//读空格
-		fscanf_s(tp, "%c", &tamp,sizeof(char));//姓名 
-		for (i = 0; tamp != '#'; i++)
-		{
-			client->name[i] = tamp;
-			fscanf_s(tp, "%c", &tamp, sizeof(char));//读空格
-			fscanf_s(tp, "%c", &tamp, sizeof(char));
-		}
-		client->name[i] = '\0';*/
+		
 		char name[MAX_L];
 		fscanf(tp, "%s", name);//姓名
 		client->name = str2qstr(name);
@@ -47,30 +41,28 @@ void client_to_inter(Client  *&clientInfo)
 		fscanf_s(tp, "%d", &(client->Amount));//借书数量
 		fscanf_s(tp, "%d", &(client->credit));//信用分数
 
-		fscanf_s(tp, "%d", &temp);//密码
+		
 		char pw[MAX_L];
-		decipher(temp, pw);
+		
+
+		fscanf(tp, "%s", pw);
 		client->password = str2qstr(pw);
-		//fscanf_s(tp, "%d", &temp);//所借书的编号
+		
 		for (i = 0; i<MAX_B; i++)
 		{
-			//client->bookNo[i] = temp;
+			
 			fscanf_s(tp, "%d", &client->bookNo[i]);
 		}
-		//client->bookNo[i] = 0;
-
-		//char charm[10];
-		//fscanf(tp, "%s", charm);//用户预约的书籍名
+		
 
 		char ob[MAX_L];
 		for (i = 0; i<MAX_B/* charm[0] != '#'*/; i++)
 		{
 			fscanf(tp, "%s", ob);
 			client->OrderedBook[i] = str2qstr(ob);
-			//strcpy(client->OrderedBook[i], charm);
-			//fscanf(tp, "%s", charm);
+			
 		}
-		//client->OrderedBook[i][0] = '\0';
+		
 		char bb[MAX_L];
 		for (i = 0; i<MAX_B; i++)//用户借走的书籍名
 		{
@@ -78,23 +70,22 @@ void client_to_inter(Client  *&clientInfo)
 			client->BorrowedBook[i] = str2qstr(bb);
 		}
 
-		//fscanf_s(tp, "%d", &temp);//借书时间
+		
 		for (i = 0; i<MAX_B; i++)
 		{
-			//client->time[i] = temp;
+			
 			fscanf(tp, "%d", &client->time[i]);
 		}
-		//client->time[i] = 0;
+		
 
 
-		//fscanf_s(tp, "%d", &temp);//借书时间
+		
 		for (i = 0; i<MAX_B; i++)
 		{
-			//client->message[i] = temp;
+			
 			fscanf(tp, "%d", &client->message[i]);
 		}
-		//client->message[i] = 0;
-		//fscanf_s(tp, "%c", &tamp, sizeof(char));//读空格
+		
 		fscanf(tp, "%d", &temp);//获取另外一个结构的首信息 
 		if (-1 == temp)
 		{
@@ -106,6 +97,10 @@ void client_to_inter(Client  *&clientInfo)
 			client = client->next;
 		}
 	}
-
+	if (!flag)
+	{
+		delete client;
+		clientInfo = nullptr;
+	}
 	fclose(tp);
 }

@@ -1,5 +1,5 @@
 #pragma once
-
+//用户详情界面
 #include <QWidget>
 #include "ui_ClientDetail.h"
 #include "client.h"

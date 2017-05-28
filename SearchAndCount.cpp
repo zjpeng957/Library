@@ -8,7 +8,6 @@
 void SearchBook(const char *name,int category,int press,const char *writer,unsigned long number, Book *FindingBook[],Book *head)
 {
 	int flag1, flag2, flag3, flag4, flag5, i = 0;
-
 	while (head)
 	{
 		//≈–∂œname «∑Òœ‡Õ¨

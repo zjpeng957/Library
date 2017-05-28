@@ -123,7 +123,7 @@ bool OrderBook(Book *BorrowingBook, Client *customer)
 	//判断用户能否预约书。能，flag=1，min=用户预约数组中能用的最小编号;不能，flag=0。
 	for (min = 0,flag=0;min < MAX_B&&(!flag);min++)
 	{
-		if(customer->OrderedBook==QString())
+		if(customer->OrderedBook[min]==QString("aaa"))
 		//if ('\0' == customer->OrderedBook[min][0])
 			flag = 1;
 	}
@@ -156,7 +156,7 @@ void OrderReminder(Client *customer,Book *head)
 	//用户预约几本书查几次
 	for (i = 0;i < MAX_B;i++)
 	{
-		if(customer->OrderedBook[i]!=QString())
+		if(customer->OrderedBook[i]!="aaa")
 		//if (customer->OrderedBook[i][0] != '\0')
 		{
 			//通过预约的书的名字找到该书的类

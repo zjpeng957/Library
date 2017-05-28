@@ -22,12 +22,12 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
 	delete ui;
-	//delete CurrentClient;
 }
 
 void MainWindow::ChoosePage(Client *CurClient)
 {
 	CurrentClient = CurClient;
+	
 	if (CurClient->type == ADMIN)
 	{
 		ui->stackedWidget->setCurrentIndex(0);
@@ -36,12 +36,14 @@ void MainWindow::ChoosePage(Client *CurClient)
 	else
 	{
 		ui->stackedWidget->setCurrentIndex(1);
-		//OrderReminder(CurrentClient, BookInfo);
+		
 		ClientInit();
+		OrderReminder(CurrentClient, BookInfo);
 	}
+	MessageInit();
 }
 
-//普通用户按钮选择控制
+//普通用户点击搜索按钮
 void MainWindow::on_ButtonSearch_clicked()
 {
 	if (ui->stackedWidgetC->currentIndex() != 0)
@@ -49,7 +51,7 @@ void MainWindow::on_ButtonSearch_clicked()
 		ui->stackedWidgetC->setCurrentIndex(0);
 	}
 }
-
+//普通用户点击还书按钮
 void MainWindow::on_ButtonReturn_clicked()
 {
 	if (ui->stackedWidgetC->currentIndex() != 1)
@@ -57,7 +59,7 @@ void MainWindow::on_ButtonReturn_clicked()
 		ui->stackedWidgetC->setCurrentIndex(1);
 	}
 }
-
+//普通用户点击查看个人信息按钮
 void MainWindow::on_ButtonInfo_clicked()
 {
 	if (ui->stackedWidgetC->currentIndex() != 2)
@@ -75,7 +77,7 @@ void MainWindow::on_ButtonHelp_clicked()
 	}
 }
 
-//管理员按钮选择控制
+//管理员点击查找用户按钮
 void MainWindow::on_ButtonSearchCA_clicked()
 {
 	if (ui->stackedWidgetA->currentIndex() != 1)
@@ -83,7 +85,7 @@ void MainWindow::on_ButtonSearchCA_clicked()
 		ui->stackedWidgetA->setCurrentIndex(1);
 	}
 }
-
+//管理员点击购书按钮
 void MainWindow::on_ButtonBuyA_clicked()
 {
 	if (ui->stackedWidgetA->currentIndex() != 2)
@@ -92,7 +94,7 @@ void MainWindow::on_ButtonBuyA_clicked()
 	}
 }
 
-
+//管理员点击查找书籍按钮
 void MainWindow::on_ButtonSearchBA_clicked()
 {
 	if (ui->stackedWidgetA->currentIndex() != 0)
@@ -130,8 +132,8 @@ void MainWindow::ShowSearchBook()
 void MainWindow::ShowSearchClient()
 {
 	QString name = ui->lineName->text();
-	string number = qstr2str(ui->lineEditNo->text());
-	string id = qstr2str(ui->lineCId->text());
+	string id = qstr2str(ui->lineEditNo->text());
+	string number = qstr2str(ui->lineCId->text());
 	unsigned s = ui->comboBoxSchool->currentIndex();
 	unsigned type = ui->comboBoxType->currentIndex();
 	auto n = number == string() ? 0 : stoi(number);
@@ -151,7 +153,7 @@ void MainWindow::ShowSearchClient()
 	QObject::connect(ui->tableClient, &QTableWidget::itemClicked, this, &MainWindow::ShowClientDetail,Qt::UniqueConnection);
 }
 
-
+//收到借书、预约或删除指令
 void MainWindow::ChangeBook(int row, DetailType type)
 {	
 	switch (type)
@@ -184,7 +186,7 @@ void MainWindow::ChangeBook(int row, DetailType type)
 //显示消息
 void MainWindow::ShowMsg()
 {
-	msgWidget *msg = new msgWidget;
+	msg = new msgWidget;
 	
 	for (int i = 0; i < MAX_B; i++)
 	{
@@ -194,6 +196,7 @@ void MainWindow::ShowMsg()
 		}
 	}
 	QObject::connect(msg, &msgWidget::msgClicked, this, &MainWindow::DealMsgClicked);
+	msg->setAttribute(Qt::WA_DeleteOnClose);
 	msg->show();
 }
 //删除用户
@@ -208,12 +211,27 @@ void MainWindow::DealMsgClicked(bool decision,int index)
 {
 	OrdertoBorrow(decision, CurrentClient, &totalBorrowedBook, BookInfo, day, index);
 	ClientInfoInit();
+	ClientReturnInit();
+	bool flag = true;
+	CurrentClient->message[index] = 0;
+	for (int i = 0; i < MAX_B&&flag; i++)
+	{
+		if (CurrentClient->message[i] != 0)
+		{
+			flag = false;
+		}
+	}
+	if (flag)
+	{
+		QIcon icon("msg_void.png");
+		msgAction->setIcon(icon);
+	}
 }
 //10秒无事件则加一天
 void MainWindow::mousePressEvent(QMouseEvent * event)
 {
 	int duration = Time.restart();
-	if (duration > 10) day += duration / 10;
+	if (duration > 1000) day += duration / 1000;
 }
 
 //用户界面初始化
@@ -228,7 +246,7 @@ void MainWindow::ClientInit()
 	ClientSearchInit();
 	ClientReturnInit();
 	ClientInfoInit();
-	MessageInit();
+	
 }
 //还书确认
 QString n = "first";
@@ -246,11 +264,20 @@ void MainWindow::ReturnBorrowedBook(QTableWidgetItem * Item)
 			i++;
 		}
 		ReturnBook(CurrentClient->bookNo[j], CurrentClient, &totalBorrowedBook, BookInfo, day);
-		//ClientInfoInit();
-		//ClientReturnInit();
+		ClientInfoInit();
+		ClientReturnInit();
 		//ui->tableReturn->removeRow(i);
 	}
 	n = "second";
+}
+
+void MainWindow::ShowBorrowRate()
+{
+	double rate;
+	if (totalBook == 0) rate = 0;
+	else rate = BorrowRate(totalBook, totalBorrowedBook);
+	string r = to_string(rate);
+	QMessageBox::about(this, str2qstr("借阅率"), str2qstr(r));
 }
 
 //用户查询界面初始化
@@ -261,7 +288,7 @@ void MainWindow::ClientSearchInit()
 	ui->tableResult->setEditTriggers(QAbstractItemView::NoEditTriggers);
 	ui->tableResult->setShowGrid(false);
 	ui->tableResult->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-
+	if (CurrentClient->type != ADMIN) ui->ButtonRate->hide();
 	//书籍类型复选框初始化
 	for (auto s : category)
 	{
@@ -279,6 +306,7 @@ void MainWindow::ClientSearchInit()
 
 	QObject::connect(ui->ButtonConfirm, &QPushButton::clicked, this, &MainWindow::ShowSearchBook);
 	QObject::connect(ui->tableResult, &QTableWidget::itemClicked, this, &MainWindow::ShowBookDtail);
+	QObject::connect(ui->ButtonRate, &QPushButton::clicked, this, &MainWindow::ShowBorrowRate);
 }
 //还书界面初始化
 void MainWindow::ClientReturnInit()
@@ -294,7 +322,7 @@ void MainWindow::ClientReturnInit()
 		if (CurrentClient->bookNo[i] != 0)
 		{
 			ui->tableReturn->setRowCount(ui->tableReturn->rowCount() + 1);
-			//-------------------------------ui.tableBorrowed->setItem(i, 0,new QTableWidgetItem());
+			
 			ui->tableReturn->setItem(i, 0, new QTableWidgetItem(CurrentClient->BorrowedBook[i]));
 			ui->tableReturn->setItem(i, 1, new QTableWidgetItem(str2qstr(to_string(CurrentClient->bookNo[i]))));
 			ui->tableReturn->setItem(i, 2, new QTableWidgetItem(str2qstr(to_string(CurrentClient->time[i]))));
@@ -314,20 +342,28 @@ void MainWindow::ClientInfoInit()
 //消息界面初始化
 void MainWindow::MessageInit()
 {
-	int flag = 0;
-	for (int i = 0; i < MAX_B; i++)
-	{
-		if (CurrentClient->message[i]) flag = 1;
-	}
 	QWidget *spacer = new QWidget(this);
 	spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	ui->toolBar->addWidget(spacer);
-	if(flag) msgAction = new QAction(QIcon("msg_in.png"), "new", this);
-	else msgAction = new QAction(QIcon("msg_void.png"), "new", this);
+
+	if (CurrentClient->type != ADMIN)
+	{
+		int flag = 0;
+		for (int i = 0; i < MAX_B; i++)
+		{
+			if (CurrentClient->message[i]) flag = 1;
+		}
+
+		if (flag) msgAction = new QAction(QIcon("msg_in.png"), "new", this);
+		else msgAction = new QAction(QIcon("msg_void.png"), "new", this);
+
+		ui->toolBar->addAction(msgAction);
+		QObject::connect(msgAction, &QAction::triggered, this, &MainWindow::ShowMsg);
+	}
 	QAction *quitAction= new QAction(QIcon("quit.png"), "new", this);
-	ui->toolBar->addAction(msgAction);
+	
 	ui->toolBar->addAction(quitAction);
-	QObject::connect(msgAction, &QAction::triggered, this, &MainWindow::ShowMsg);
+	
 	QObject::connect(quitAction, &QAction::triggered, this, &MainWindow::close);
 }
 
@@ -367,25 +403,29 @@ void MainWindow::AdminSearchCInit()
 
 	QObject::connect(ui->ButtonClientSearch, &QPushButton::clicked, this, &MainWindow::ShowSearchClient);
 }
-
+//管理员输入新书信息，点击确认后的处理
 void MainWindow::BuyBook()
 {
 	QString name = ui->lineBuyName->text();
 	QString writer = ui->lineBuyAuthor->text();
-	int press = ui->CBoxPress->currentIndex();
+	int press = ui->BoxBuyPress->currentIndex();
 	int number= stoi(qstr2str(ui->lineBuyAmount->text()));
-	int type = ui->CBoxType->currentIndex();
+	int type = ui->BoxBuyCategory->currentIndex();
 	double price = stof(qstr2str(ui->lineBuyPrice->text()));
 	//----------------将输入的书籍信息传递给购书函数
-	buy_book(name, writer, press, type, number, price, day);
-	
+	if (buy_book(name, writer, press, type, number, price, day) == 0)
+	{
+		QMessageBox::about(this, str2qstr("提示"), str2qstr("购入失败！"));
+		return;
+	}
+	QMessageBox::about(this, str2qstr("提示"), str2qstr("购入成功！"));
 	//将输入清空
 	ui->lineBuyName->clear();
 	ui->lineBuyAuthor->clear();
 	ui->lineBuyAmount->clear();
 	ui->lineBuyPrice->clear();
-	ui->CBoxPress->setCurrentIndex(0);
-	ui->CBoxType->setCurrentIndex(0);
+	ui->BoxBuyPress->setCurrentIndex(0);
+	ui->BoxBuyCategory->setCurrentIndex(0);
 }
 //购书界面初始化
 void MainWindow::AdminBuyInit()

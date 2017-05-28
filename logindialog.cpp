@@ -3,6 +3,7 @@
 #include "mainwindow.h"
 #include "registerdialog.h"
 #include<QObject>
+#include<regex>
 LoginDialog::LoginDialog(QWidget *parent) :
 	QDialog(parent),
 	ui(new Ui::LoginDialog)
@@ -32,28 +33,45 @@ void LoginDialog::on_Login_clicked()
 	if (ui->NumberText->text() != QString() && ui->PwText->text()!=QString())
 	{
 		//管理员登录
-		if (ui->NumberText->text() == "admin"&&ui->PwText->text() == "123456")
+		if (ui->NumberText->text() == "admin")
 		{
-			Client *admin = new Client;
-			admin->name = "admin";
-			admin->password = "123456";
-			admin->type = ADMIN;
-			accept();
-			emit LoginType(admin);
-		}
-		else
-		{//普通用户
-			unsigned UserId = stoi(qstr2str(ui->NumberText->text()));
-			string pw = qstr2str(ui->PwText->text());
-			Client *CurrentClient = login(UserId, pw);
-			if (CurrentClient != nullptr)
+			if (ui->PwText->text() == "123456")
 			{
+				Client *admin = new Client;
+				admin->name = "admin";
+				admin->password = "123456";
+				admin->type = ADMIN;
 				accept();
-				emit LoginType(CurrentClient);
+				emit LoginType(admin);
 			}
 			else
 			{
 				ui->WarnLabel->setText(str2qstr("登录失败!"));
+			}
+		}
+		else
+		{//普通用户
+			regex reg("^[0-9]+$");
+			smatch result;
+			string Uid = qstr2str(ui->NumberText->text());
+			if (regex_match(Uid,result,reg))
+			{
+				unsigned UserId = stoi(qstr2str(ui->NumberText->text()));
+				string pw = qstr2str(ui->PwText->text());
+				Client *CurrentClient = login(UserId, pw);
+				if (CurrentClient != nullptr)
+				{
+					accept();
+					emit LoginType(CurrentClient);
+				}
+				else
+				{
+					ui->WarnLabel->setText(str2qstr("登录失败!"));
+				}
+			}
+			else
+			{
+				ui->WarnLabel->setText(str2qstr("账号应为数字！"));
 			}
 		}
 	}

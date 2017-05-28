@@ -1,6 +1,6 @@
 #ifndef LOGINDIALOG_H
 #define LOGINDIALOG_H
-
+//µÇÂ¼´°¿Ú
 #include <QDialog>
 #include "header.h"
 #include"client.h"

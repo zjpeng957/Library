@@ -13,6 +13,7 @@ void book_to_inter( Book *&bookInfo)
 	int i;
 	int temp;//存临时信息 
 	char tamp;
+	bool flag = false;
 	unsigned long t;
 
 	//p = (Book *)malloc(sizeof( Book));//动态申请结构 
@@ -23,32 +24,17 @@ void book_to_inter( Book *&bookInfo)
 	fscanf_s(tp, "%d", &temp);//文件的首信息存于temp 
 	while (temp != -1)//该位置之后没有信息 
 	{
+		flag = true;
 		for (i = 0; i < MAX_B; i++) {//读取所有编号 
 			book->number[i] = temp;
 			fscanf_s(tp, "%d", &temp);//编号
 		}
-		//book->number[i] = 1;
-
-		/*fscanf_s(tp, "%c", &tamp, sizeof(char));//读空格
-		fscanf_s(tp, "%c", &tamp, sizeof(char));//书名
-		for (i = 0; tamp != '#'; i++) {
-			book->name[i] = tamp;
-			fscanf_s(tp, "%c", &tamp, sizeof(char));//读空格
-			fscanf_s(tp, "%c", &tamp, sizeof(char));
-		}
-		book->name[i] = '\0';*/
+		
 		char name[MAX_L];
 		fscanf(tp, "%s", name);//书名
 		book->name = str2qstr(name);
 		
-		/*fscanf_s(tp, "%c", &tamp, sizeof(char));//读空格
-		fscanf_s(tp, "%c", &tamp, sizeof(char));//作者
-		for (i = 0; tamp != '#'; i++) {
-			book->writer[i] = tamp;
-			fscanf_s(tp, "%c", &tamp, sizeof(char));//读空格
-			fscanf_s(tp, "%c", &tamp, sizeof(char));
-		}
-		book->writer[i] = '\0';*/
+		
 		char writer[MAX_L];
 		fscanf(tp, "%s", writer);//作者
 		book->writer = str2qstr(writer);
@@ -56,24 +42,23 @@ void book_to_inter( Book *&bookInfo)
 		fscanf_s(tp, "%d", &(book->category));//类别
 
 
-		//fscanf_s(tp, "%c", &tamp, sizeof(char));//读空格
-		//fscanf_s(tp, "%c", &tamp, sizeof(char));
+		
 		for (i = 0; i<MAX_B; i++) {//购入时间
 			fscanf_s(tp, "%d", &tamp, sizeof(char));//读空格
-			//fscanf_s(tp, "%d", &tamp, sizeof(char));
+			
 			book->buyTime[i] = tamp;
 		}
-		//book->buyTime[i] = '\0';
+		
 
 		fscanf_s(tp, "%d", &(book->totalNumber));//总数量
 		fscanf_s(tp, "%d", &(book->currentNumber));//当前数量
 
-		//fscanf_s(tp, "%d", &t);//文件中状态的首信息存于temp
+		
 		for (i = 0; i<MAX_B; i++) {//读取所有状态 
-			//book->status[i] = t;
+			
 			fscanf_s(tp, "%d", &book->status[i]);//借阅状态
 		}
-		//book->status[i] = 0;
+		
 
 		fscanf_s(tp, "%d", &temp);//预约用户队列
 		for (i = 0; temp != 0; i++){
@@ -92,6 +77,10 @@ void book_to_inter( Book *&bookInfo)
               book = book->next;//下一个结构
 		}
 	}
-
+	if (!flag)
+	{
+		delete book;
+		bookInfo = nullptr;
+	}
 	fclose(tp);
 }

@@ -22,8 +22,6 @@ void encrypt(const char * en_number,FILE *tp)//ÊäÈëĞèÒª¼ÓÃÜµÄ×Ö·û´®Óë¼ÓÃÜºó´æ·Åµ
 	}
 
 	fprintf(tp, "%d ", Num);//½«¼ÓÃÜºóµÄÖµĞ´ÈëÎÄ¼ş 
-
-
 }
 
 

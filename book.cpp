@@ -8,4 +8,6 @@ Book::Book()
 		status[i] = 0;
 		BorrowTime[0] = 0;
 	}
+	ordered = deque<unsigned>();
+	next = nullptr;
 }

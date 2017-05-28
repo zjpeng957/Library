@@ -22,7 +22,7 @@ Client* client_register(QString clientname,QString code,int type,int academy,int
     //strcpy(newclient->name,clientname);
 	newclient->name = clientname;
     newclient->type=type;
-    if(type==0)
+    if(type==STUDENT)
     {
         newclient->authority=5;//change
     }
@@ -44,6 +44,11 @@ Client* client_register(QString clientname,QString code,int type,int academy,int
     }
     //newclient->OrderedBook[0]='/0';
     newclient->id=id_making(type,academy);
+	if (last == nullptr)
+	{
+		ClientInfo = newclient;
+		return newclient;
+	}
     while(last->next!=NULL)
     {
         last=last->next;
