@@ -434,38 +434,7 @@
         </property>
        </widget>
       </widget>
-      <widget class="QWidget" name="PageList">
-       <widget class="QTableWidget" name="tableBList">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>20</y>
-          <width>881</width>
-          <height>611</height>
-         </rect>
-        </property>
-        <column>
-         <property name="text">
-          <string>用户编号</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>书名</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>借书日期</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>还书日期</string>
-         </property>
-        </column>
-       </widget>
-      </widget>
+      <widget class="QWidget" name="PageHelpA"/>
      </widget>
      <widget class="QPushButton" name="ButtonSearchCA">
       <property name="geometry">
@@ -493,21 +462,7 @@
        <string/>
       </property>
      </widget>
-     <widget class="QPushButton" name="ButtonBListA">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>480</y>
-        <width>93</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>借书单</string>
-      </property>
-     </widget>
      <zorder>label_2</zorder>
-     <zorder>ButtonBListA</zorder>
      <zorder>ButtonBuyA</zorder>
      <zorder>ButtonSearchBA</zorder>
      <zorder>ButtonSearchCA</zorder>

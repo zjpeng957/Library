@@ -405,9 +405,10 @@ void MainWindow::AdminInit()
 	ui->ButtonSearchBA->setStyleSheet(SideButtonStyle);
 	ui->ButtonSearchCA->setStyleSheet(SideButtonStyle);
 	ui->ButtonBuyA->setStyleSheet(SideButtonStyle);
+	ui->ButtonBListA->setStyleSheet(SideButtonStyle);
 	ui->label_2->setStyleSheet("background-color: rgb(60, 195, 245)");
 	ui->ButtonSearchBA->setFocus();
-
+	QObject::connect(ui->ButtonBListA, &QPushButton::clicked, this, &MainWindow::AdminListInit);
 	ui->stackedWidgetA->removeWidget(ui->PageSearchBA);
 	ui->stackedWidgetA->insertWidget(0, ui->PageSearch);
 	ClientSearchInit();
@@ -472,6 +473,41 @@ void MainWindow::AdminBuyInit()
 	}
 
 	QObject::connect(ui->pushButtonBuyConfirm, &QPushButton::clicked, this, &MainWindow::BuyBook);
+}
+
+void MainWindow::AdminListInit()
+{
+	ui->stackedWidgetA->setCurrentWidget(ui->PageList);
+	ui->tableBList->setStyleSheet(OddTableUnitStyle);
+	ui->tableBList->setSelectionBehavior(QAbstractItemView::SelectRows);
+	ui->tableBList->setEditTriggers(QAbstractItemView::NoEditTriggers);
+	ui->tableBList->setShowGrid(false);
+	ui->tableBList->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+	ui->tableBList->setRowCount(0);
+	for (int i = 0; i < BList.ClientNo.size(); i++)
+	{
+		{
+			ui->tableBList->setRowCount(ui->tableBList->rowCount() + 1);
+
+			ui->tableBList->setItem(i, 0, new QTableWidgetItem(str2qstr(to_string(BList.ClientNo[i]))));
+			ui->tableBList->setItem(i, 1, new QTableWidgetItem(str2qstr(BList.BookName[i])));
+			ui->tableBList->setItem(i, 2, new QTableWidgetItem(str2qstr(to_string(BList.BorrowTime[i]))));
+			ui->tableBList->setItem(i, 3, new QTableWidgetItem(str2qstr(to_string(BList.ReturnTime[i]))));
+		}
+	}
+	/*QTableWidgetItem *p = nullptr;
+	for (int i = 0; i < ui->tableReturn->rowCount(); i++)
+	{
+		p = ui->tableReturn->item(i, 0);
+		if (p->text() == "aaa")
+		{
+			ui->tableReturn->removeRow(i);
+			i--;
+		}
+	}*/
+
+	//QObject::connect(ui->tableReturn, &QTableWidget::itemClicked, this, &MainWindow::ReturnBorrowedBook, Qt::UniqueConnection);
+	
 }
 
 //点击书籍列表中的某一行后显示书籍详情

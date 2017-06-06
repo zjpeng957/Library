@@ -78,6 +78,7 @@ private:
     
     void AdminSearchCInit();
     void AdminBuyInit();
+	void AdminListInit();
 
 	void ShowSearchBook();
 	void ShowSearchClient();
