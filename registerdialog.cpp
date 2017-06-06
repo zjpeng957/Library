@@ -38,8 +38,9 @@ void registerDialog::on_ButtonRegister_clicked()
 		CurrentClient = client_register(name, pw, ui->comboBoxType->currentIndex(), ui->comboBoxSchool->currentIndex(), id);
 	}
 	string hint = "id:";
+	QString title = "记住您的账号";
 	QString info = str2qstr(hint+to_string(CurrentClient->id));
-	auto reply = QMessageBox::information(this, str2qstr("succeed!"), info, QMessageBox::Ok);
+	auto reply = QMessageBox::information(this, title, info, QMessageBox::Ok);
 	if (reply == QMessageBox::Ok)
 	{
 		accept();

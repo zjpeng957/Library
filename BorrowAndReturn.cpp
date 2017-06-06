@@ -71,14 +71,14 @@ int BorrowBook(Book *BorrowingBook, Client *customer, int *TotalBorrowedBook,uns
 }
 
 //还书
-bool ReturnBook(const unsigned long number , Client *customer, int *TotalBorrowedBook, Book *head, unsigned int time)
+bool ReturnBook(unsigned int number , Client *customer, int *TotalBorrowedBook, Book *head, unsigned int time,string &name)
 {
 	Book *BorrowingBook[10];
 	int result=0,flag=1;
-
+	
 	//根据编号找到该书
 	SearchBook("\0", 0, 0, "\0", number, BorrowingBook, head);
-
+	
 	while (flag)
 	{
 		int positionB,positionC;
@@ -108,7 +108,7 @@ bool ReturnBook(const unsigned long number , Client *customer, int *TotalBorrowe
 		//记入日志
 		back_book(time, qstr2str(customer->name).c_str(), customer->number, customer->school, BorrowingBook[0]->number, qstr2str(BorrowingBook[0]->name).c_str(), qstr2str(BorrowingBook[0]->writer).c_str(), BorrowingBook[0]->press, BorrowingBook[0]->totalNumber, 1);
 	}
-
+	name = qstr2str(BorrowingBook[0]->name);
 	if (result)
 		return true;
 	else

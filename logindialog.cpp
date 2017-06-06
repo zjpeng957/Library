@@ -11,6 +11,7 @@ LoginDialog::LoginDialog(QWidget *parent) :
 	ui->setupUi(this);
 	ui->Login->setStyleSheet(NormalButtonStyle);
 	ui->SignUp->setStyleSheet(NormalButtonStyle);
+	ui->Login->setFocus();
 }
 
 LoginDialog::~LoginDialog()

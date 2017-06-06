@@ -2,7 +2,7 @@
 #define CLIENT_H
 #include<Qstring>
 using namespace std;
-const int MAX_B=10;
+const int MAX_B=20;
 enum CItem{ClientN,CName,Type,School};
 enum Type{STUDENT,TEACHER,ADMIN};
 class Client

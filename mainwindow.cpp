@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+
 #include <QDebug>
 #include<fstream>
 #include<iostream>
@@ -13,8 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui->setupUi(this);
 	setStyleSheet("background-color:rgb(235, 242, 249)");
 	Time.start();
-	//ClientInit();
-	//AdminInit();
+	
 	ui->stackedWidgetC->setCurrentIndex(0);
 	ui->stackedWidgetA->setCurrentIndex(0);
 }
@@ -137,7 +137,7 @@ void MainWindow::ShowSearchClient()
 	unsigned s = ui->comboBoxSchool->currentIndex();
 	unsigned type = ui->comboBoxType->currentIndex();
 	auto n = number == string() ? 0 : stoi(number);
-	auto i = number == string() ? 0 : stoi(id);
+	auto i = id == string() ? 0 : stoi(id);
 	
 	SearchClient(name, n, i, type,s,SearchedClient, ClientInfo);
 	ui->tableResult->clearContents();
@@ -148,7 +148,7 @@ void MainWindow::ShowSearchClient()
 		ui->tableClient->setItem(i, 0, new QTableWidgetItem(SearchedClient[i]->name));
 		ui->tableClient->setItem(i, 1, new QTableWidgetItem(str2qstr(to_string(SearchedClient[i]->number))));
 		ui->tableClient->setItem(i, 2, new QTableWidgetItem(str2qstr(SearchedClient[i]->type==STUDENT?"学生":"教师")));
-		ui->tableClient->setItem(i, 3, new QTableWidgetItem(str2qstr(school[SearchedClient[i]->type])));
+		ui->tableClient->setItem(i, 3, new QTableWidgetItem(str2qstr(school[SearchedClient[i]->school])));
 	}
 	QObject::connect(ui->tableClient, &QTableWidget::itemClicked, this, &MainWindow::ShowClientDetail,Qt::UniqueConnection);
 }
@@ -161,11 +161,12 @@ void MainWindow::ChangeBook(int row, DetailType type)
 	case TBorrow://借阅书籍
 		if (BorrowBook(SearchedBook[row], CurrentClient, &totalBorrowedBook, day))
 		{
+			BList.BorrowBook(CurrentClient->number, qstr2str(SearchedBook[row]->name), day);
 			QMessageBox::information(this, str2qstr("提示"), str2qstr("借书成功！"), QMessageBox::Ok);
 			ClientInfoInit();
 			ClientReturnInit();
 			ui->tableResult->setItem(row, 4, new QTableWidgetItem(QString::number(SearchedBook[row]->currentNumber)));
-				}
+		}
 		else QMessageBox::information(this, str2qstr("提示"), str2qstr("借书失败！"), QMessageBox::Ok);
 		break;
 	case TOrder://预约书籍
@@ -177,7 +178,9 @@ void MainWindow::ChangeBook(int row, DetailType type)
 		else QMessageBox::information(this, str2qstr("提示"), str2qstr("预约失败！"), QMessageBox::Ok);
 		break;
 	case TDelete:
-				ui->tableResult->removeRow(row);
+				db = new DBook(SearchedBook[row]);
+				db->show();
+				QObject::connect(db, &DBook::DeleteNo, this, &MainWindow::DeleteBook);
 		break;
 	default:
 		break;
@@ -206,6 +209,16 @@ void MainWindow::DeleteClient()
 	cancel_client(SearchedClient[r]->id);
 	ui->tableClient->removeRow(r);
 }
+void MainWindow::DeleteBook(unsigned n)
+{
+	auto result=cancel_book(n, day);
+	if(result==1)
+	{
+		QMessageBox::information(this, str2qstr("提示"), str2qstr("删除成功！"), QMessageBox::Ok);
+	}
+	else QMessageBox::information(this, str2qstr("提示"), str2qstr("删除失败！"), QMessageBox::Ok);
+}
+
 //用户点击信息处理
 void MainWindow::DealMsgClicked(bool decision,int index)
 {
@@ -231,7 +244,7 @@ void MainWindow::DealMsgClicked(bool decision,int index)
 void MainWindow::mousePressEvent(QMouseEvent * event)
 {
 	int duration = Time.restart();
-	if (duration > 1000) day += duration / 1000;
+	if (duration > 10000) day += duration / 10000;
 }
 
 //用户界面初始化
@@ -245,14 +258,15 @@ void MainWindow::ClientInit()
 
 	ClientSearchInit();
 	ClientReturnInit();
+	
 	ClientInfoInit();
 	
 }
 //还书确认
-QString n = "first";
 void MainWindow::ReturnBorrowedBook(QTableWidgetItem * Item)
 {
-	auto reply = QMessageBox::question(this, n, str2qstr("确认归还？"), QMessageBox::Yes | QMessageBox::No);
+	
+	auto reply = QMessageBox::question(this, str2qstr("提示"), str2qstr("确认归还？"), QMessageBox::Yes | QMessageBox::No);
 	if (reply == QMessageBox::Yes)
 	{
 		int i = 0,j=0;
@@ -263,12 +277,20 @@ void MainWindow::ReturnBorrowedBook(QTableWidgetItem * Item)
 			while (CurrentClient->bookNo[j] == 0) j++;
 			i++;
 		}
-		ReturnBook(CurrentClient->bookNo[j], CurrentClient, &totalBorrowedBook, BookInfo, day);
+		string n;
+		
+		auto result=ReturnBook(CurrentClient->bookNo[j], CurrentClient, &totalBorrowedBook, BookInfo, day,n);
+		if (result&&(day - CurrentClient->time[j] > CurrentClient->authority))
+		{
+			string money = to_string(day - CurrentClient->time[j]);
+			QMessageBox::information(this, str2qstr("提示"), str2qstr("借书超时，需支付"+money+"元"), QMessageBox::Ok);
+		}
+		BList.returnBook(CurrentClient->number, n, day);
 		ClientInfoInit();
-		ClientReturnInit();
-		//ui->tableReturn->removeRow(i);
+		//ClientReturnInit();
+		ui->tableReturn->removeRow(i);
+
 	}
-	n = "second";
 }
 
 void MainWindow::ShowBorrowRate()
@@ -303,7 +325,7 @@ void MainWindow::ClientSearchInit()
 
 	//按钮初始化
 	ui->ButtonConfirm->setStyleSheet(NormalButtonStyle);
-
+	
 	QObject::connect(ui->ButtonConfirm, &QPushButton::clicked, this, &MainWindow::ShowSearchBook);
 	QObject::connect(ui->tableResult, &QTableWidget::itemClicked, this, &MainWindow::ShowBookDtail);
 	QObject::connect(ui->ButtonRate, &QPushButton::clicked, this, &MainWindow::ShowBorrowRate);
@@ -319,14 +341,24 @@ void MainWindow::ClientReturnInit()
 	ui->tableReturn->setRowCount(0);
 	for (int i = 0; i < MAX_B; i++)
 	{
-		if (CurrentClient->bookNo[i] != 0)
+		//if (CurrentClient->bookNo[i] != 0)
 		{
 			ui->tableReturn->setRowCount(ui->tableReturn->rowCount() + 1);
 			
 			ui->tableReturn->setItem(i, 0, new QTableWidgetItem(CurrentClient->BorrowedBook[i]));
 			ui->tableReturn->setItem(i, 1, new QTableWidgetItem(str2qstr(to_string(CurrentClient->bookNo[i]))));
 			ui->tableReturn->setItem(i, 2, new QTableWidgetItem(str2qstr(to_string(CurrentClient->time[i]))));
-			ui->tableReturn->setItem(i, 3, new QTableWidgetItem(str2qstr(to_string(MAX_DAYS - CurrentClient->time[i]))));
+			ui->tableReturn->setItem(i, 3, new QTableWidgetItem(str2qstr(to_string(MAX_DAYS - int(day-CurrentClient->time[i])))));
+		}
+	}
+	QTableWidgetItem *p = nullptr;
+	for (int i = 0; i < ui->tableReturn->rowCount(); i++)
+	{
+		p = ui->tableReturn->item(i, 0);
+		if (p->text() == "aaa")
+		{
+			ui->tableReturn->removeRow(i);
+			i--;
 		}
 	}
 
@@ -400,7 +432,7 @@ void MainWindow::AdminSearchCInit()
 	{
 		ui->comboBoxSchool->addItem(str2qstr(s.second));
 	}
-
+	ui->ButtonClientSearch->setStyleSheet(NormalButtonStyle);
 	QObject::connect(ui->ButtonClientSearch, &QPushButton::clicked, this, &MainWindow::ShowSearchClient);
 }
 //管理员输入新书信息，点击确认后的处理

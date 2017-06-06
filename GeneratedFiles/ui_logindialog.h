@@ -60,7 +60,7 @@ public:
         font1.setBold(false);
         font1.setWeight(50);
         Login->setFont(font1);
-        Login->setFocusPolicy(Qt::NoFocus);
+        Login->setFocusPolicy(Qt::TabFocus);
         Login->setFlat(false);
         SignUp = new QPushButton(LoginDialog);
         SignUp->setObjectName(QStringLiteral("SignUp"));

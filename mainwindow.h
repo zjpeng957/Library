@@ -19,6 +19,8 @@
 #include "BorrowAndReturn.h"
 #include "ClientInfo.h"
 #include "BookInfo.h"
+#include "dbook.h"
+#include "BorrowList.h"
 
 const int MAX_LINE = 20;
 
@@ -58,6 +60,7 @@ private slots:
 
 	void DeleteClient();
 	
+	void DeleteBook(unsigned n);
 
 	void DealMsgClicked(bool decision,int index);
 protected:
@@ -88,9 +91,11 @@ private:
     Client *CurrentClient;
 	Book *SearchedBook[MAX_BOOK];
 	Client *SearchedClient[MAX_C];
+	DBook *db;
 	QAction *msgAction;
 	msgWidget *msg;
 	QTime Time;
+	borrowList BList;
 };
 
 #endif // MAINWINDOW_H

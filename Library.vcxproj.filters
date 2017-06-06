@@ -177,6 +177,18 @@
     <ClCompile Include="buy.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
+    <ClCompile Include="Debug\moc_dbook.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Release\moc_dbook.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="dbook.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BorrowList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="book.h">
@@ -242,6 +254,12 @@
     <ClInclude Include="BorrowAndReturn.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_dbook.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BorrowList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="debug\moc_predefs.h.cbt">
@@ -273,6 +291,12 @@
     </CustomBuild>
     <CustomBuild Include="msgWidget.h">
       <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="dbook.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="dbook.ui">
+      <Filter>Form Files</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>

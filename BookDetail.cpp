@@ -3,20 +3,28 @@
 BookDetail::BookDetail(Book *Target,int r, DetailType t, QWidget *parent)
 	: QWidget(parent),TargetBook(Target),row(r),type(t)
 {
-	ui.setupUi(this);
 	
+	ui.setupUi(this);
+	setStyleSheet("background-color:rgb(235, 242, 249)");
+	ui.Buttonbnr->setStyleSheet(NormalButtonStyle);
+	ui.ButtonCancel->setStyleSheet(NormalButtonStyle);
+	ui.ButtonOthers->setStyleSheet(NormalButtonStyle);
 	switch (type)
 	{
 	case TBorrow:ui.Buttonbnr->setText(str2qstr("借阅"));
+		ui.ButtonOthers->hide();
 		break;
 	case TOrder:ui.Buttonbnr->setText(str2qstr("预约"));
+		ui.ButtonOthers->hide();
 		break;
 	case TDelete:ui.Buttonbnr->setText(str2qstr("删除"));
 		QObject::connect(ui.ButtonOthers, &QPushButton::clicked, this, &BookDetail::OpenMore);
 		break;
 	case TReturn:ui.Buttonbnr->setText(str2qstr("还书"));
+		ui.ButtonOthers->hide();
 		break;
 	case TNorder:ui.Buttonbnr->setText(str2qstr("取消预约"));
+		ui.ButtonOthers->hide();
 		break;
 	default:
 		break;

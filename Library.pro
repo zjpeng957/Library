@@ -28,7 +28,26 @@ SOURCES += main.cpp\
     mainwindow.cpp \
     borrowdialog.cpp \
     booklist.cpp \
-    registerdialog.cpp
+    registerdialog.cpp \
+    book.cpp \
+    book_to_inter.cpp \
+    BookDetail.cpp \
+    BookInfo.cpp \
+    BookTabWidget.cpp \
+    BorrowAndReturn.cpp \
+    buy.cpp \
+    client.cpp \
+    client_to_inter.cpp \
+    ClientDetail.cpp \
+    ClientInfo.cpp \
+    global.cpp \
+    inter_to_book.cpp \
+    inter_to_client.cpp \
+    Log_managemengt.cpp \
+    login.cpp \
+    msgWidget.cpp \
+    register.cpp \
+    SearchAndCount.cpp
 
 HEADERS  += \
     logindialog.h \
@@ -37,14 +56,31 @@ HEADERS  += \
     mainwindow.h \
     borrowdialog.h \
     booklist.h \
-    registerdialog.h
+    registerdialog.h \
+    BookDetail.h \
+    BookInfo.h \
+    BookTabWidget.h \
+    BorrowAndReturn.h \
+    buy.h \
+    ClientDetail.h \
+    ClientInfo.h \
+    fuction.h \
+    global.h \
+    header.h \
+    login.h \
+    msgWidget.h \
+    register.h \
+    SearchAndCount.h
 
 FORMS    += \
     logindialog.ui \
     mainwindow.ui \
-    borrowdialog.ui \
     booklist.ui \
-    registerdialog.ui
+    registerdialog.ui \
+    BookDetail.ui \
+    BookTabWidget.ui \
+    ClientDetail.ui \
+    msgWidget.ui
 
 RESOURCES += \
     rec.qrc

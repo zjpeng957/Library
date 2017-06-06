@@ -7,7 +7,7 @@ extern void ComputeCredit(Client *customer, unsigned int time);
 
 extern int BorrowBook(Book *BorrowingBook, Client *customer, int *TotalBorrowedBook, unsigned int time);
 
-extern bool ReturnBook(const unsigned long number, Client *customer, int *TotalBorrowedBook, Book *head, unsigned int time);
+extern bool ReturnBook(unsigned int number, Client *customer, int *TotalBorrowedBook, Book *head, unsigned int time, string &name);
 
 extern bool OrderBook(Book *BorrowingBook, Client *customer);
 

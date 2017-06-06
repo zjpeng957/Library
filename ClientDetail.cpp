@@ -4,6 +4,10 @@ ClientDetail::ClientDetail(Client *TC, QWidget *parent)
 	: TargetClient(TC),QWidget(parent)
 {
 	ui.setupUi(this);
+	setStyleSheet("background-color:rgb(235, 242, 249)");
+	ui.pushButton->setStyleSheet(NormalButtonStyle);
+	ui.pushButtonClose->setStyleSheet(NormalButtonStyle);
+
 	ui.textName->setText(TargetClient->name);
 	ui.textSchool->setText(str2qstr(school[TargetClient->school]));
 	ui.textType->setText(str2qstr(TargetClient->type == STUDENT ? "学生" : "教师"));
@@ -34,14 +38,24 @@ void ClientDetail::TableBorrowInit()
 {
 	for (int i = 0; i < MAX_B; i++)
 	{
-		if (TargetClient->bookNo[i] != 0)
+		//if (TargetClient->bookNo[i] != 0)
 		{
 			ui.tableBorrowed->setRowCount(ui.tableBorrowed->rowCount() + 1);
 			//-------------------------------ui.tableBorrowed->setItem(i, 0,new QTableWidgetItem());
 			ui.tableBorrowed->setItem(i, 0, new QTableWidgetItem(TargetClient->BorrowedBook[i]));
 			ui.tableBorrowed->setItem(i, 1, new QTableWidgetItem(str2qstr(to_string(TargetClient->bookNo[i]))));
 			ui.tableBorrowed->setItem(i, 2, new QTableWidgetItem(str2qstr(to_string(TargetClient->time[i]))));
-			ui.tableBorrowed->setItem(i, 3, new QTableWidgetItem(str2qstr(to_string(MAX_DAYS - TargetClient->time[i]))));
+			ui.tableBorrowed->setItem(i, 3, new QTableWidgetItem(str2qstr(to_string(MAX_DAYS - int(day-TargetClient->time[i])))));
+		}
+	}
+	QTableWidgetItem *p = nullptr;
+	for (int i = 0; i < ui.tableBorrowed->rowCount(); i++)
+	{
+		p = ui.tableBorrowed->item(i, 0);
+		if (p->text() == "aaa")
+		{
+			ui.tableBorrowed->removeRow(i);
+			i--;
 		}
 	}
 }

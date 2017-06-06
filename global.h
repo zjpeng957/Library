@@ -51,6 +51,7 @@ const QString OddTableButtonStyle("{background-color:rgb(245,245,247);color:rgb(
 const QString EvenTableButtonStyle("{background-color:rgb(235, 242, 249);color:rgb(60, 220, 245);}"
 	"hover{background-color:rgb(235,236,237);color:rgb(0,0,0);}");
 
+
 enum ClientButton { SEARCH, RETURN, INFO, HELP };
 enum AdminButton { SEARCHB, SEARCHA, BUY, HELPA };
 

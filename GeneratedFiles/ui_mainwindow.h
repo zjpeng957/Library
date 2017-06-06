@@ -163,56 +163,70 @@ public:
         gridLayout_2->setContentsMargins(0, 0, 0, 0);
         labelSchoolS = new QLabel(gridLayoutWidget_3);
         labelSchoolS->setObjectName(QStringLiteral("labelSchoolS"));
+        QFont font;
+        font.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
+        font.setPointSize(10);
+        labelSchoolS->setFont(font);
 
         gridLayout_2->addWidget(labelSchoolS, 1, 2, 1, 1);
 
         comboBoxType = new QComboBox(gridLayoutWidget_3);
         comboBoxType->setObjectName(QStringLiteral("comboBoxType"));
+        comboBoxType->setFont(font);
 
         gridLayout_2->addWidget(comboBoxType, 0, 3, 1, 1);
 
         lineName = new QLineEdit(gridLayoutWidget_3);
         lineName->setObjectName(QStringLiteral("lineName"));
+        lineName->setFont(font);
 
         gridLayout_2->addWidget(lineName, 0, 1, 1, 1);
 
         labelNoS = new QLabel(gridLayoutWidget_3);
         labelNoS->setObjectName(QStringLiteral("labelNoS"));
+        labelNoS->setFont(font);
 
         gridLayout_2->addWidget(labelNoS, 1, 0, 1, 1);
 
         labelTypeS = new QLabel(gridLayoutWidget_3);
         labelTypeS->setObjectName(QStringLiteral("labelTypeS"));
+        labelTypeS->setFont(font);
 
         gridLayout_2->addWidget(labelTypeS, 0, 2, 1, 1);
 
         comboBoxSchool = new QComboBox(gridLayoutWidget_3);
         comboBoxSchool->setObjectName(QStringLiteral("comboBoxSchool"));
+        comboBoxSchool->setFont(font);
 
         gridLayout_2->addWidget(comboBoxSchool, 1, 3, 1, 1);
 
         lineEditNo = new QLineEdit(gridLayoutWidget_3);
         lineEditNo->setObjectName(QStringLiteral("lineEditNo"));
+        lineEditNo->setFont(font);
 
         gridLayout_2->addWidget(lineEditNo, 1, 1, 1, 1);
 
         labelNameS = new QLabel(gridLayoutWidget_3);
         labelNameS->setObjectName(QStringLiteral("labelNameS"));
+        labelNameS->setFont(font);
 
         gridLayout_2->addWidget(labelNameS, 0, 0, 1, 1);
 
         ButtonClientSearch = new QPushButton(gridLayoutWidget_3);
         ButtonClientSearch->setObjectName(QStringLiteral("ButtonClientSearch"));
+        ButtonClientSearch->setFont(font);
 
         gridLayout_2->addWidget(ButtonClientSearch, 2, 3, 1, 1);
 
         labelId = new QLabel(gridLayoutWidget_3);
         labelId->setObjectName(QStringLiteral("labelId"));
+        labelId->setFont(font);
 
         gridLayout_2->addWidget(labelId, 2, 0, 1, 1);
 
         lineCId = new QLineEdit(gridLayoutWidget_3);
         lineCId->setObjectName(QStringLiteral("lineCId"));
+        lineCId->setFont(font);
 
         gridLayout_2->addWidget(lineCId, 2, 1, 1, 1);
 
@@ -229,6 +243,7 @@ public:
         tableClient->setHorizontalHeaderItem(3, __qtablewidgetitem3);
         tableClient->setObjectName(QStringLiteral("tableClient"));
         tableClient->setGeometry(QRect(20, 280, 881, 401));
+        tableClient->setFont(font);
         stackedWidgetA->addWidget(pageSearchCA);
         PageBuyA = new QWidget();
         PageBuyA->setObjectName(QStringLiteral("PageBuyA"));
@@ -240,73 +255,83 @@ public:
         gridLayout_3->setContentsMargins(0, 0, 0, 0);
         labelBuyName = new QLabel(gridLayoutWidget_4);
         labelBuyName->setObjectName(QStringLiteral("labelBuyName"));
+        labelBuyName->setFont(font);
 
         gridLayout_3->addWidget(labelBuyName, 0, 0, 1, 1);
 
         lineBuyName = new QLineEdit(gridLayoutWidget_4);
         lineBuyName->setObjectName(QStringLiteral("lineBuyName"));
+        lineBuyName->setFont(font);
 
         gridLayout_3->addWidget(lineBuyName, 0, 1, 1, 1);
 
         labelBuyNumber = new QLabel(gridLayoutWidget_4);
         labelBuyNumber->setObjectName(QStringLiteral("labelBuyNumber"));
+        labelBuyNumber->setFont(font);
 
         gridLayout_3->addWidget(labelBuyNumber, 1, 2, 1, 1);
 
         lineBuyAmount = new QLineEdit(gridLayoutWidget_4);
         lineBuyAmount->setObjectName(QStringLiteral("lineBuyAmount"));
+        lineBuyAmount->setFont(font);
 
         gridLayout_3->addWidget(lineBuyAmount, 1, 3, 1, 1);
 
         labelBuyCategory = new QLabel(gridLayoutWidget_4);
         labelBuyCategory->setObjectName(QStringLiteral("labelBuyCategory"));
+        labelBuyCategory->setFont(font);
 
         gridLayout_3->addWidget(labelBuyCategory, 2, 0, 1, 1);
 
         labelBuyPrice = new QLabel(gridLayoutWidget_4);
         labelBuyPrice->setObjectName(QStringLiteral("labelBuyPrice"));
+        labelBuyPrice->setFont(font);
 
         gridLayout_3->addWidget(labelBuyPrice, 2, 2, 1, 1);
 
         lineBuyPrice = new QLineEdit(gridLayoutWidget_4);
         lineBuyPrice->setObjectName(QStringLiteral("lineBuyPrice"));
+        lineBuyPrice->setFont(font);
 
         gridLayout_3->addWidget(lineBuyPrice, 2, 3, 1, 1);
 
         BoxBuyCategory = new QComboBox(gridLayoutWidget_4);
         BoxBuyCategory->setObjectName(QStringLiteral("BoxBuyCategory"));
+        BoxBuyCategory->setFont(font);
 
         gridLayout_3->addWidget(BoxBuyCategory, 2, 1, 1, 1);
 
         lineBuyAuthor = new QLineEdit(gridLayoutWidget_4);
         lineBuyAuthor->setObjectName(QStringLiteral("lineBuyAuthor"));
+        lineBuyAuthor->setFont(font);
 
         gridLayout_3->addWidget(lineBuyAuthor, 0, 3, 1, 1);
 
         BoxBuyPress = new QComboBox(gridLayoutWidget_4);
         BoxBuyPress->setObjectName(QStringLiteral("BoxBuyPress"));
+        BoxBuyPress->setFont(font);
 
         gridLayout_3->addWidget(BoxBuyPress, 1, 1, 1, 1);
 
         labelBuyPress = new QLabel(gridLayoutWidget_4);
         labelBuyPress->setObjectName(QStringLiteral("labelBuyPress"));
+        labelBuyPress->setFont(font);
 
         gridLayout_3->addWidget(labelBuyPress, 1, 0, 1, 1);
 
         labelBuyAuthor = new QLabel(gridLayoutWidget_4);
         labelBuyAuthor->setObjectName(QStringLiteral("labelBuyAuthor"));
+        labelBuyAuthor->setFont(font);
 
         gridLayout_3->addWidget(labelBuyAuthor, 0, 2, 1, 1);
 
         pushButtonBuyConfirm = new QPushButton(PageBuyA);
         pushButtonBuyConfirm->setObjectName(QStringLiteral("pushButtonBuyConfirm"));
         pushButtonBuyConfirm->setGeometry(QRect(740, 420, 93, 41));
+        pushButtonBuyConfirm->setFont(font);
         labelBuyHint = new QLabel(PageBuyA);
         labelBuyHint->setObjectName(QStringLiteral("labelBuyHint"));
         labelBuyHint->setGeometry(QRect(80, 420, 311, 16));
-        QFont font;
-        font.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
-        font.setPointSize(10);
         labelBuyHint->setFont(font);
         stackedWidgetA->addWidget(PageBuyA);
         PageHelpA = new QWidget();
@@ -358,10 +383,7 @@ public:
         gridLayout->setContentsMargins(0, 0, 0, 0);
         LabelBName = new QLabel(gridLayoutWidget);
         LabelBName->setObjectName(QStringLiteral("LabelBName"));
-        QFont font1;
-        font1.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
-        font1.setPointSize(11);
-        LabelBName->setFont(font1);
+        LabelBName->setFont(font);
 
         gridLayout->addWidget(LabelBName, 0, 0, 1, 1);
 
@@ -378,25 +400,25 @@ public:
 
         LabelBNumber = new QLabel(gridLayoutWidget);
         LabelBNumber->setObjectName(QStringLiteral("LabelBNumber"));
-        LabelBNumber->setFont(font1);
+        LabelBNumber->setFont(font);
 
         gridLayout->addWidget(LabelBNumber, 2, 0, 1, 1);
 
         LabelPress = new QLabel(gridLayoutWidget);
         LabelPress->setObjectName(QStringLiteral("LabelPress"));
-        LabelPress->setFont(font1);
+        LabelPress->setFont(font);
 
         gridLayout->addWidget(LabelPress, 1, 2, 1, 1);
 
         LabelCategory = new QLabel(gridLayoutWidget);
         LabelCategory->setObjectName(QStringLiteral("LabelCategory"));
-        LabelCategory->setFont(font1);
+        LabelCategory->setFont(font);
 
         gridLayout->addWidget(LabelCategory, 0, 2, 1, 1);
 
         LabelAuthor = new QLabel(gridLayoutWidget);
         LabelAuthor->setObjectName(QStringLiteral("LabelAuthor"));
-        LabelAuthor->setFont(font1);
+        LabelAuthor->setFont(font);
 
         gridLayout->addWidget(LabelAuthor, 1, 0, 1, 1);
 
@@ -410,7 +432,7 @@ public:
         LineBookWriter->setObjectName(QStringLiteral("LineBookWriter"));
         sizePolicy.setHeightForWidth(LineBookWriter->sizePolicy().hasHeightForWidth());
         LineBookWriter->setSizePolicy(sizePolicy);
-        LineBookWriter->setFont(font1);
+        LineBookWriter->setFont(font);
 
         gridLayout->addWidget(LineBookWriter, 1, 1, 1, 1);
 
@@ -425,10 +447,7 @@ public:
         sizePolicy.setHeightForWidth(LineBookName->sizePolicy().hasHeightForWidth());
         LineBookName->setSizePolicy(sizePolicy);
         LineBookName->setMinimumSize(QSize(0, 20));
-        QFont font2;
-        font2.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
-        font2.setPointSize(14);
-        LineBookName->setFont(font2);
+        LineBookName->setFont(font);
 
         gridLayout->addWidget(LineBookName, 0, 1, 1, 1);
 
@@ -464,6 +483,9 @@ public:
         TextResult = new QLabel(PageSearch);
         TextResult->setObjectName(QStringLiteral("TextResult"));
         TextResult->setGeometry(QRect(20, 210, 101, 31));
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
+        font1.setPointSize(11);
         TextResult->setFont(font1);
         ButtonRate = new QPushButton(PageSearch);
         ButtonRate->setObjectName(QStringLiteral("ButtonRate"));
@@ -495,71 +517,85 @@ public:
         LayoutInfo->setContentsMargins(0, 0, 0, 0);
         labelNumber = new QLabel(gridLayoutWidget_2);
         labelNumber->setObjectName(QStringLiteral("labelNumber"));
+        labelNumber->setFont(font);
 
         LayoutInfo->addWidget(labelNumber, 1, 2, 1, 1);
 
         labelCredit = new QLabel(gridLayoutWidget_2);
         labelCredit->setObjectName(QStringLiteral("labelCredit"));
+        labelCredit->setFont(font);
 
         LayoutInfo->addWidget(labelCredit, 0, 2, 1, 1);
 
         TextSchool = new QLabel(gridLayoutWidget_2);
         TextSchool->setObjectName(QStringLiteral("TextSchool"));
+        TextSchool->setFont(font);
 
         LayoutInfo->addWidget(TextSchool, 2, 1, 1, 1);
 
         labelSchool = new QLabel(gridLayoutWidget_2);
         labelSchool->setObjectName(QStringLiteral("labelSchool"));
+        labelSchool->setFont(font);
 
         LayoutInfo->addWidget(labelSchool, 2, 0, 1, 1);
 
         TextPw = new QLabel(gridLayoutWidget_2);
         TextPw->setObjectName(QStringLiteral("TextPw"));
+        TextPw->setFont(font);
 
         LayoutInfo->addWidget(TextPw, 2, 3, 1, 1);
 
         TextCName = new QLabel(gridLayoutWidget_2);
         TextCName->setObjectName(QStringLiteral("TextCName"));
+        TextCName->setFont(font);
 
         LayoutInfo->addWidget(TextCName, 0, 1, 1, 1);
 
         labelName = new QLabel(gridLayoutWidget_2);
         labelName->setObjectName(QStringLiteral("labelName"));
+        labelName->setFont(font);
 
         LayoutInfo->addWidget(labelName, 0, 0, 1, 1);
 
         TextCredit = new QLabel(gridLayoutWidget_2);
         TextCredit->setObjectName(QStringLiteral("TextCredit"));
+        TextCredit->setFont(font);
 
         LayoutInfo->addWidget(TextCredit, 0, 3, 1, 1);
 
         labelType = new QLabel(gridLayoutWidget_2);
         labelType->setObjectName(QStringLiteral("labelType"));
+        labelType->setFont(font);
 
         LayoutInfo->addWidget(labelType, 1, 0, 1, 1);
 
         TextType = new QLabel(gridLayoutWidget_2);
         TextType->setObjectName(QStringLiteral("TextType"));
+        TextType->setFont(font);
 
         LayoutInfo->addWidget(TextType, 1, 1, 1, 1);
 
         labelNumberA = new QLabel(gridLayoutWidget_2);
         labelNumberA->setObjectName(QStringLiteral("labelNumberA"));
+        labelNumberA->setFont(font);
 
         LayoutInfo->addWidget(labelNumberA, 1, 3, 1, 1);
 
         labelPw = new QLabel(gridLayoutWidget_2);
         labelPw->setObjectName(QStringLiteral("labelPw"));
+        labelPw->setFont(font);
 
         LayoutInfo->addWidget(labelPw, 2, 2, 1, 1);
 
         labelID = new QLabel(gridLayoutWidget_2);
         labelID->setObjectName(QStringLiteral("labelID"));
+        labelID->setFont(font);
 
         LayoutInfo->addWidget(labelID, 3, 0, 1, 1);
 
         TextID = new QLabel(gridLayoutWidget_2);
         TextID->setObjectName(QStringLiteral("TextID"));
+        TextID->setFont(font);
 
         LayoutInfo->addWidget(TextID, 3, 1, 1, 1);
 
@@ -569,6 +605,7 @@ public:
         tabBook = new QTabWidget(PageInfo);
         tabBook->setObjectName(QStringLiteral("tabBook"));
         tabBook->setGeometry(QRect(10, 330, 871, 361));
+        tabBook->setFont(font);
         tabBorrowed = new QWidget();
         tabBorrowed->setObjectName(QStringLiteral("tabBorrowed"));
         tableBorrowed = new QTableWidget(tabBorrowed);
@@ -626,8 +663,8 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(1);
-        stackedWidgetC->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(0);
+        stackedWidgetC->setCurrentIndex(3);
         tabBook->setCurrentIndex(1);
 
 

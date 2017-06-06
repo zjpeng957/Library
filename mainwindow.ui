@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="PageAdmin">
      <widget class="QPushButton" name="ButtonSearchBA">
@@ -79,19 +79,45 @@
         <layout class="QGridLayout" name="gridLayout_2">
          <item row="1" column="2">
           <widget class="QLabel" name="labelSchoolS">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>学院：</string>
            </property>
           </widget>
          </item>
          <item row="0" column="3">
-          <widget class="QComboBox" name="comboBoxType"/>
+          <widget class="QComboBox" name="comboBoxType">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+          </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QLineEdit" name="lineName"/>
+          <widget class="QLineEdit" name="lineName">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+          </widget>
          </item>
          <item row="1" column="0">
           <widget class="QLabel" name="labelNoS">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>账号：</string>
            </property>
@@ -99,19 +125,45 @@
          </item>
          <item row="0" column="2">
           <widget class="QLabel" name="labelTypeS">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>类型：</string>
            </property>
           </widget>
          </item>
          <item row="1" column="3">
-          <widget class="QComboBox" name="comboBoxSchool"/>
+          <widget class="QComboBox" name="comboBoxSchool">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+          </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QLineEdit" name="lineEditNo"/>
+          <widget class="QLineEdit" name="lineEditNo">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+          </widget>
          </item>
          <item row="0" column="0">
           <widget class="QLabel" name="labelNameS">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>姓名：</string>
            </property>
@@ -119,6 +171,12 @@
          </item>
          <item row="2" column="3">
           <widget class="QPushButton" name="ButtonClientSearch">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>搜索</string>
            </property>
@@ -126,13 +184,26 @@
          </item>
          <item row="2" column="0">
           <widget class="QLabel" name="labelId">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>学号/工作号：</string>
            </property>
           </widget>
          </item>
          <item row="2" column="1">
-          <widget class="QLineEdit" name="lineCId"/>
+          <widget class="QLineEdit" name="lineCId">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -144,6 +215,12 @@
           <width>881</width>
           <height>401</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
         </property>
         <column>
          <property name="text">
@@ -180,26 +257,58 @@
         <layout class="QGridLayout" name="gridLayout_3">
          <item row="0" column="0">
           <widget class="QLabel" name="labelBuyName">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>书名：</string>
            </property>
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QLineEdit" name="lineBuyName"/>
+          <widget class="QLineEdit" name="lineBuyName">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+          </widget>
          </item>
          <item row="1" column="2">
           <widget class="QLabel" name="labelBuyNumber">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>数量：</string>
            </property>
           </widget>
          </item>
          <item row="1" column="3">
-          <widget class="QLineEdit" name="lineBuyAmount"/>
+          <widget class="QLineEdit" name="lineBuyAmount">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+          </widget>
          </item>
          <item row="2" column="0">
           <widget class="QLabel" name="labelBuyCategory">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>类型：</string>
            </property>
@@ -207,25 +316,65 @@
          </item>
          <item row="2" column="2">
           <widget class="QLabel" name="labelBuyPrice">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>价格：</string>
            </property>
           </widget>
          </item>
          <item row="2" column="3">
-          <widget class="QLineEdit" name="lineBuyPrice"/>
+          <widget class="QLineEdit" name="lineBuyPrice">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+          </widget>
          </item>
          <item row="2" column="1">
-          <widget class="QComboBox" name="BoxBuyCategory"/>
+          <widget class="QComboBox" name="BoxBuyCategory">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+          </widget>
          </item>
          <item row="0" column="3">
-          <widget class="QLineEdit" name="lineBuyAuthor"/>
+          <widget class="QLineEdit" name="lineBuyAuthor">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+          </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QComboBox" name="BoxBuyPress"/>
+          <widget class="QComboBox" name="BoxBuyPress">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+          </widget>
          </item>
          <item row="1" column="0">
           <widget class="QLabel" name="labelBuyPress">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>出版社：</string>
            </property>
@@ -233,6 +382,12 @@
          </item>
          <item row="0" column="2">
           <widget class="QLabel" name="labelBuyAuthor">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>作者：</string>
            </property>
@@ -248,6 +403,12 @@
           <width>93</width>
           <height>41</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
         </property>
         <property name="text">
          <string>确认购入</string>
@@ -396,7 +557,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="PageSearch">
        <widget class="QWidget" name="gridLayoutWidget">
@@ -414,7 +575,7 @@
            <property name="font">
             <font>
              <family>微软雅黑</family>
-             <pointsize>11</pointsize>
+             <pointsize>10</pointsize>
             </font>
            </property>
            <property name="text">
@@ -443,7 +604,7 @@
            <property name="font">
             <font>
              <family>微软雅黑</family>
-             <pointsize>11</pointsize>
+             <pointsize>10</pointsize>
             </font>
            </property>
            <property name="text">
@@ -456,7 +617,7 @@
            <property name="font">
             <font>
              <family>微软雅黑</family>
-             <pointsize>11</pointsize>
+             <pointsize>10</pointsize>
             </font>
            </property>
            <property name="text">
@@ -469,7 +630,7 @@
            <property name="font">
             <font>
              <family>微软雅黑</family>
-             <pointsize>11</pointsize>
+             <pointsize>10</pointsize>
             </font>
            </property>
            <property name="text">
@@ -482,7 +643,7 @@
            <property name="font">
             <font>
              <family>微软雅黑</family>
-             <pointsize>11</pointsize>
+             <pointsize>10</pointsize>
             </font>
            </property>
            <property name="text">
@@ -511,7 +672,7 @@
            <property name="font">
             <font>
              <family>微软雅黑</family>
-             <pointsize>11</pointsize>
+             <pointsize>10</pointsize>
             </font>
            </property>
           </widget>
@@ -543,7 +704,7 @@
            <property name="font">
             <font>
              <family>微软雅黑</family>
-             <pointsize>14</pointsize>
+             <pointsize>10</pointsize>
             </font>
            </property>
           </widget>
@@ -695,6 +856,12 @@
         <layout class="QGridLayout" name="LayoutInfo">
          <item row="1" column="2">
           <widget class="QLabel" name="labelNumber">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>账号：</string>
            </property>
@@ -702,6 +869,12 @@
          </item>
          <item row="0" column="2">
           <widget class="QLabel" name="labelCredit">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>信用：</string>
            </property>
@@ -709,6 +882,12 @@
          </item>
          <item row="2" column="1">
           <widget class="QLabel" name="TextSchool">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -716,6 +895,12 @@
          </item>
          <item row="2" column="0">
           <widget class="QLabel" name="labelSchool">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>学院：</string>
            </property>
@@ -723,6 +908,12 @@
          </item>
          <item row="2" column="3">
           <widget class="QLabel" name="TextPw">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -730,6 +921,12 @@
          </item>
          <item row="0" column="1">
           <widget class="QLabel" name="TextCName">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -737,6 +934,12 @@
          </item>
          <item row="0" column="0">
           <widget class="QLabel" name="labelName">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>姓名：</string>
            </property>
@@ -744,6 +947,12 @@
          </item>
          <item row="0" column="3">
           <widget class="QLabel" name="TextCredit">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -751,6 +960,12 @@
          </item>
          <item row="1" column="0">
           <widget class="QLabel" name="labelType">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>类型：</string>
            </property>
@@ -758,6 +973,12 @@
          </item>
          <item row="1" column="1">
           <widget class="QLabel" name="TextType">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -765,6 +986,12 @@
          </item>
          <item row="1" column="3">
           <widget class="QLabel" name="labelNumberA">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -772,6 +999,12 @@
          </item>
          <item row="2" column="2">
           <widget class="QLabel" name="labelPw">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>密码：</string>
            </property>
@@ -779,6 +1012,12 @@
          </item>
          <item row="3" column="0">
           <widget class="QLabel" name="labelID">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>学号/工作号：</string>
            </property>
@@ -786,6 +1025,12 @@
          </item>
          <item row="3" column="1">
           <widget class="QLabel" name="TextID">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -814,6 +1059,12 @@
           <width>871</width>
           <height>361</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
         </property>
         <property name="currentIndex">
          <number>1</number>
